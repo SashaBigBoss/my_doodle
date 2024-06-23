@@ -1,16 +1,22 @@
-export const App = () => {
+// src/components/App.jsx
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import EventCreation from './EventCreation';
+import VotingPage from './VotingPage';
+import HomePage from './HomePage';
+// import SocialLogin from './SocialLogin';
+
+const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Router basename="/my_doodle">
+      <Routes>
+        <Route path="/create" element={<EventCreation />} />
+        <Route path="/vote/:eventId" element={<VotingPage />} />
+        {/* <Route path="/login" element={<SocialLogin />} /> */}
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </Router>
   );
 };
+
+export default App;
